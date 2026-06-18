@@ -23,6 +23,36 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="id" className={`${urbanist.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var originalFetch = window.fetch;
+                  var customFetch = originalFetch;
+                  Object.defineProperty(window, 'fetch', {
+                    get: function() { return customFetch; },
+                    set: function(val) { customFetch = val; },
+                    configurable: true,
+                    enumerable: true
+                  });
+                  if (typeof self !== 'undefined' && self !== window) {
+                    try {
+                      Object.defineProperty(self, 'fetch', {
+                        get: function() { return customFetch; },
+                        set: function(val) { customFetch = val; },
+                        configurable: true,
+                        enumerable: true
+                      });
+                    } catch (innerEx) {}
+                  }
+                } catch (e) {
+                  console.warn("Could not patch fetch descriptor:", e);
+                }
+              })();
+            `
+          }}
+        />
         <link 
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 

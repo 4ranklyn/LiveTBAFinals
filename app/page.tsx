@@ -727,6 +727,122 @@ export default function Page() {
                       <p className="text-sm text-slate-400 mb-6">{activeSlide.subtitle}</p>
                     </div>
 
+                    {/* Sleek PDA State Transition Diagram */}
+                    <div className="bg-black/20 border border-white/5 rounded-xl p-4 mb-6">
+                      <p className="text-[10px] font-mono text-[#00f2fe]/80 uppercase tracking-wider mb-4 text-center">
+                        PDA State Transition Diagram
+                      </p>
+                      
+                      <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-4 py-6 px-2 select-none overflow-x-auto min-w-full">
+                        {/* Node 1: q0 */}
+                        <div className="flex flex-col items-center text-center relative group min-w-[130px]">
+                          {/* Loop Label above */}
+                          <div className="mb-3 text-[10px] font-mono text-cyan-300 leading-tight bg-cyan-950/40 px-2.5 py-1 rounded border border-cyan-500/10 shadow-[0_0_8px_rgba(6,182,212,0.15)] flex flex-col items-center">
+                            <span className="text-[8px] text-slate-500 uppercase tracking-widest mb-0.5">Loop</span>
+                            <span>a, Z₀ → aZ₀</span>
+                            <span>a, a → aa</span>
+                          </div>
+                          
+                          {/* Circle State */}
+                          <div className="relative">
+                            {/* Loop Indicator Arc using SVG */}
+                            <svg className="absolute -top-6 left-1/2 -translate-x-1/2 w-8 h-6 text-cyan-400 opacity-60" viewBox="0 0 32 24" fill="none">
+                              <path d="M 4 20 A 12 12 0 1 1 28 20" stroke="currentColor" strokeWidth="2" strokeDasharray="3 2" />
+                              <path d="M 28 20 L 24 14 M 28 20 L 22 22" stroke="currentColor" strokeWidth="2" />
+                            </svg>
+                            
+                            <div className="bg-white/5 border border-white/20 hover:border-cyan-400/60 hover:bg-white/10 backdrop-blur w-16 h-16 rounded-full flex items-center justify-center font-mono font-bold text-lg text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.15)] duration-300 transition-all">
+                              q₀
+                            </div>
+                            
+                            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 font-mono text-[9px] text-slate-500 uppercase tracking-widest">
+                              START
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Arrow 1: q0 -> q1 */}
+                        <div className="flex flex-row md:flex-col items-center justify-center flex-1 min-w-[90px] max-w-[130px] py-2">
+                          <span className="text-[10px] font-mono font-semibold text-amber-400 bg-amber-950/30 px-2 py-0.5 rounded border border-amber-500/10 mb-1.5 whitespace-nowrap">
+                            b, a → ε
+                          </span>
+                          <svg className="w-12 h-6 md:w-full md:h-6" viewBox="0 0 80 24" fill="none" preserveAspectRatio="none">
+                            <defs>
+                              <linearGradient id="cyanToRose" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="#06b6d4" />
+                                <stop offset="100%" stopColor="#f43f5e" />
+                              </linearGradient>
+                            </defs>
+                            <line x1="0" y1="12" x2="72" y2="12" stroke="url(#cyanToRose)" strokeWidth="2" strokeDasharray="3 2" />
+                            <polygon points="72,7 80,12 72,17" fill="#f43f5e" />
+                          </svg>
+                        </div>
+
+                        {/* Node 2: q1 */}
+                        <div className="flex flex-col items-center text-center relative group min-w-[130px]">
+                          {/* Loop Label above */}
+                          <div className="mb-3 text-[10px] font-mono text-rose-300 leading-tight bg-rose-950/40 px-2.5 py-1 rounded border border-rose-500/10 shadow-[0_0_8px_rgba(244,63,94,0.15)] flex flex-col items-center">
+                            <span className="text-[8px] text-slate-500 uppercase tracking-widest mb-0.5">Loop</span>
+                            <span>b, a → ε</span>
+                          </div>
+                          
+                          {/* Circle State */}
+                          <div className="relative">
+                            {/* Loop Indicator Arc using SVG */}
+                            <svg className="absolute -top-6 left-1/2 -translate-x-1/2 w-8 h-6 text-rose-400 opacity-60" viewBox="0 0 32 24" fill="none">
+                              <path d="M 4 20 A 12 12 0 1 1 28 20" stroke="currentColor" strokeWidth="2" strokeDasharray="3 2" />
+                              <path d="M 28 20 L 24 14 M 28 20 L 22 22" stroke="currentColor" strokeWidth="2" />
+                            </svg>
+                            
+                            <div className="bg-white/5 border border-white/20 hover:border-rose-400/60 hover:bg-white/10 backdrop-blur w-16 h-16 rounded-full flex items-center justify-center font-mono font-bold text-lg text-rose-400 shadow-[0_0_20px_rgba(244,63,94,0.15)] duration-300 transition-all">
+                              q₁
+                            </div>
+                            
+                            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 font-mono text-[9px] text-slate-500 uppercase tracking-widest">
+                              LOOPING
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Arrow 2: q1 -> q2 */}
+                        <div className="flex flex-row md:flex-col items-center justify-center flex-1 min-w-[90px] max-w-[130px] py-2">
+                          <span className="text-[10px] font-mono font-semibold text-emerald-400 bg-emerald-950/30 px-2 py-0.5 rounded border border-emerald-500/10 mb-1.5 whitespace-nowrap">
+                            ε, Z₀ → Z₀
+                          </span>
+                          <svg className="w-12 h-6 md:w-full md:h-6" viewBox="0 0 80 24" fill="none" preserveAspectRatio="none">
+                            <defs>
+                              <linearGradient id="roseToEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="#f43f5e" />
+                                <stop offset="100%" stopColor="#10b981" />
+                              </linearGradient>
+                            </defs>
+                            <line x1="0" y1="12" x2="72" y2="12" stroke="url(#roseToEmerald)" strokeWidth="2" strokeDasharray="3 2" />
+                            <polygon points="72,7 80,12 72,17" fill="#10b981" />
+                          </svg>
+                        </div>
+
+                        {/* Node 3: q2 */}
+                        <div className="flex flex-col items-center text-center relative group min-w-[130px]">
+                          {/* Placeholder to balance layout top height of loops */}
+                          <div className="mb-3 h-[34px] invisible"></div>
+                          
+                          {/* Double Circle State */}
+                          <div className="relative">
+                            <div className="relative p-1 bg-white/5 border border-white/20 hover:border-emerald-400/60 hover:bg-white/10 backdrop-blur w-16 h-16 rounded-full flex items-center justify-center font-mono font-bold text-lg text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.15)] duration-300 transition-all">
+                              {/* Inner Circle to make it a double-circle representation of final state */}
+                              <div className="w-full h-full border border-emerald-400/35 rounded-full flex items-center justify-center">
+                                q₂
+                              </div>
+                            </div>
+                            
+                            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 font-mono text-[9px] text-emerald-400 uppercase tracking-widest font-semibold">
+                              ACCEPT
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch my-auto">
                       
                       {/* Tile 1 */}
