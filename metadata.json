@@ -1,0 +1,6 @@
+{
+  "name": "Teori Komputasi UAS Masterclass",
+  "description": "An interactive, high-fidelity slide deck for the Theory of Computation (Teori Komputasi) UAS Masterclass with formula rendering, animated automata visualizers, and state indicators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
